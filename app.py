@@ -1,5 +1,4 @@
 import datetime
-import random
 import time
 
 import requests as requests
@@ -98,7 +97,7 @@ if __name__ == '__main__':
         except Exception as E:
             print(E)
 
-    # requests.post('http://127.0.0.1:8000/api/v1/number', data={'user_id': 'nikita_0001',
-    #                                                            'number': '380713891427',
-    #                                                           'is_parser': True,
-    #                                                           'is_online': False})
+# requests.post('http://127.0.0.1:8000/api/v1/number', data={'user_id': 'nikita_0001',
+#                                                            'number': '380713891427',
+#                                                           'is_parser': True,
+#                                                           'is_online': False})
