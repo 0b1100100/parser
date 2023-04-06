@@ -11,12 +11,12 @@ from selenium.webdriver.support import expected_conditions as EC
 class Post_form(object):
     def __init__(self):
         options = webdriver.ChromeOptions()
-        options.add_argument("user-data-dir=C:/Users/Administrator/AppData/Local/Google/Chrome/User Data/Default")
+        options.add_argument("user-data-dir=./DefaultChromeDataWC")
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
 
-        self.__driver = webdriver.Chrome(executable_path=r'chromedriver.exe', chrome_options=options)
+        self.__driver = webdriver.Chrome(executable_path=r'chromedriver', chrome_options=options)
 
     def get_url_start(self):
         url = 'https://web.whatsapp.com/'
@@ -24,10 +24,8 @@ class Post_form(object):
         self.__driver.maximize_window()
         self.__driver.implicitly_wait(3)
         WebDriverWait(self.__driver, 70).until(
-            EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[3]/header/div[1]/div/img'))
-        )
-        #
-
+            EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[3]/header/div[1]/div/img')))
+            
     def _one_page_url(self, number):
         self.__driver.get(f'https://web.whatsapp.com/send/?phone={number}')
 
@@ -64,7 +62,7 @@ class Post_form(object):
                     self._one_page_url(number=_num)
                     result = self._two_page_check_online()
 
-                    time.sleep(500)
+                    time.sleep(600)
                     if result == 'Off':
                         try:
                             if ' ' in result:
@@ -96,8 +94,3 @@ if __name__ == '__main__':
             test_class.__start__()
         except Exception as E:
             print(E)
-
-# requests.post('http://127.0.0.1:8000/api/v1/number', data={'user_id': 'nikita_0001',
-#                                                            'number': '380713891427',
-#                                                           'is_parser': True,
-#                                                           'is_online': False})
