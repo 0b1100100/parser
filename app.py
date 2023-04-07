@@ -25,7 +25,6 @@ class Post_form(object):
         self.__driver.implicitly_wait(3)
         WebDriverWait(self.__driver, 70).until(
             EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div/div[3]/header/div[1]/div/img')))
-            
     def _one_page_url(self, number):
         self.__driver.get(f'https://web.whatsapp.com/send/?phone={number}')
 
